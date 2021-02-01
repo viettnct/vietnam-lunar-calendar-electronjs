@@ -12,4 +12,4 @@ jobs:
       with:
         to: -593348120
         token: 1670734630:AAHev_YkqM2PEjv6QkIxIIkeAmT9NJZwpyM
-        args: The ${{ github.event_name }} event triggered first step.
+        args: Thằng ${{ github.event.inputs.name }} vừa ${{ github.event_name }} ở ${{ github.event.inputs.home }}.
