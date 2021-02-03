@@ -16,8 +16,8 @@ const App = () => {
     <>
       {/* <GlobalStyle />
       <Greetings /> */}
-      {/* <Home /> */}
-      <Tailwind />
+      <Home />
+      {/* <Tailwind /> */}
     </>
   )
 };

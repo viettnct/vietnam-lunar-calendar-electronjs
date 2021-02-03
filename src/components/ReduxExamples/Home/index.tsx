@@ -8,7 +8,7 @@ import { MyStore } from '../../../models/MyStoreModel';
 const Home : React.FC = () => {
     return(
     <Container fixed>
-        <HeaderTitle>REDUX EXAMPLE</HeaderTitle>
+        <HeaderTitle>REDUX + TAILWIND EXAMPLE</HeaderTitle>
         <Form/>
         <Table/>
     </Container>

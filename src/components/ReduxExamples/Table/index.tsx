@@ -16,7 +16,7 @@ import { IExample } from '../../../models/ExampleModel';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useStyles } from './styles';
 import { deleteData } from '../../../actions/ExampleAction';
-
+import '../../../../styles.css';
 
 const ExampleTable: React.FC = () => {
     const dispatch = useDispatch();
@@ -28,36 +28,32 @@ const ExampleTable: React.FC = () => {
         dispatch(deleteData(element.id))
     }
     return (
-        <TableContainer component={Paper}>
-            <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Name</TableCell>
-                        <TableCell align="center">Birth</TableCell>
-                        <TableCell>Address</TableCell>
-                        <TableCell>Delete</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {data.map((dt: IExample) => (
-                        <TableRow key={dt.id}>
-                            <TableCell >
-                                {`${dt.lastName} ${dt.firstName}`}
-                            </TableCell>
-                            <TableCell align="center">{dt.birth}</TableCell>
-                            <TableCell>{dt.address}</TableCell>
-                            <TableCell>
-                                <IconButton aria-label="delete" 
-                                onClick={() => { onDelete(dt) }}>
-                                    <DeleteIcon />
-                                </IconButton>
-                            </TableCell>
-
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
+        <div className="text-gray-900 bg-gray-200">
+            <div className="px-3 py-4 flex justify-center">
+                <table className="w-full text-md bg-white shadow-md rounded mb-4">
+                    <tbody>
+                        <tr className="border-b">
+                            <th className="text-left p-3 px-5">Name</th>
+                            <th className="text-left p-3 px-5">Birth</th>
+                            <th className="text-left p-3 px-5">Address</th>
+                            <th className="text-left p-3 px-5">Delete</th>
+                            <th />
+                        </tr>
+                        {data.map((dt: IExample) => (
+                            <tr className="border-b hover:bg-orange-100">
+                                <td className="p-3 px-5 text-left">{`${dt.lastName} ${dt.firstName}`}</td>
+                                <td className="p-3 px-5">{dt.birth}</td>
+                                <td className="p-3 px-5">{dt.address}</td>
+                                <td className="p-3 px-5 flex justify-start">
+                                    <button type="button" className="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline"
+                                    onClick={() => { onDelete(dt) }} >Delete</button>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     );
 }
 

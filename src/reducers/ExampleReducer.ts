@@ -33,7 +33,6 @@ export const exampleReducer = (state: MyStore = initialState, action: ExampleTyp
                 data: [...state.data, action.data]
             }
         case Example.DELETE_DATA:
-            console.log(action)
             return {
                 ...state,
                 data: state.data.filter((x: any) => x.id !== action.id)
