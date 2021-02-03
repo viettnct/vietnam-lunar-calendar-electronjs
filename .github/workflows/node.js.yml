@@ -20,4 +20,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: ${{ toJSON(github) }} Thằng ${{ github.actor }} vừa ${{ github.event_name }} kìa anh ${{ github.repository_owner }} ơi. Chi tiết ${{ github.base_ref }}
+        message: ${{ toJSON(github) }} Thằng ${{ github.actor }} vừa ${{ github.event_name }} kìa anh ${{ github.repository_owner }} ơi. Chi tiết ${{ github.event.pull_request.html_url }}
