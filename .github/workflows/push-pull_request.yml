@@ -36,4 +36,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Thằng ${{ github.actor }} vừa ${{ github.event.action }} issue "#${{ github.event.issue.number }}" cho "#${{ github.event.assignee.login }}". Chi tiết ${{ github.event.issue.html_url }}
+        message: Thằng ${{ github.actor }} vừa ${{ github.event.action }} issue "#${{ github.event.issue.number }}" cho "${{ github.event.assignee.login }}". Chi tiết ${{ github.event.issue.html_url }}
