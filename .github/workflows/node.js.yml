@@ -13,3 +13,11 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: Thằng ${{ github.event.pusher.name }} vừa ${{ github.event_name }} lên nhánh ${{ github.ref }}. Chi tiết ${{ github.event.compare }}
+
+    - name: send telegram alert pull-request
+      if: github.event_name == 'pull_request'
+      uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_TO }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          message: ${{ toJSON(github) }} Thằng ${{ github.actor }} vừa ${{ github.event_name }} kìa anh ${{ repository_owner }} ơi. Chi tiết ${{ github.base_ref }}
