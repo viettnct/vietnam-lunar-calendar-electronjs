@@ -23,9 +23,17 @@ jobs:
         message: Thằng ${{ github.actor }} vừa ${{ github.event_name }} kìa anh ${{ github.repository_owner }} ơi. Chi tiết ${{ github.event.pull_request.html_url }}
 
     - name: send telegram alert issues
-      if: github.event_name == 'issues'
+      if: github.event_name == 'issues' && github.event.action != 'assigned' && github.event.action != 'unassigned'
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: ${{ toJSON(github) }}
+        message: Thằng ${{ github.actor }} vừa ${{ github.event.action }} issue "#${{ github.event.issue.number }}". Chi tiết ${{ github.event.issue.html_url }}
+
+    - name: send telegram alert issues
+      if: github.event_name == 'issues' && (github.event.action == 'assigned' || github.event.action == 'unassigned')
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: Thằng ${{ github.actor }} vừa ${{ github.event.action }} issue cho "#${{ github.event.assignee.login }}". Chi tiết ${{ github.event.issue.html_url }}
