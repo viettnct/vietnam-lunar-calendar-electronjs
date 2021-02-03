@@ -23,7 +23,7 @@ jobs:
         message: Thằng ${{ github.actor }} vừa ${{ github.event_name }} kìa anh ${{ github.repository_owner }} ơi. Chi tiết ${{ github.event.pull_request.html_url }}
 
     - name: send telegram alert issues
-      if: github.event_name == 'issues'
+      if: github.event_name == 'opened'
       uses: appleboy/telegram-action@master
       with:
         to: ${{ secrets.TELEGRAM_TO }}
