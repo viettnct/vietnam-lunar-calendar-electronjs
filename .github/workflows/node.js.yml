@@ -1,8 +1,5 @@
 name: telegram message
-on:
-  push
-  pull_request
-  issues
+on: [push, pull_request, issues]
 jobs:
   alert_telegram:
     name: Alert Telegram
