@@ -28,4 +28,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: Tin nhắn khi có hook issue
+        message: ${{ toJSON(github) }}
