@@ -1,0 +1,16 @@
+name: telegram message issue
+on:
+  issues:
+    types: [opened, edited, deleted, closed, reopened]
+jobs:
+  alert_telegram:
+    name: Alert Telegram
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: send telegram alert issues
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: Tin nhắn khi có hook issue
