@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const rootPath = path.resolve(__dirname, '..')
 
@@ -9,7 +10,7 @@ module.exports = {
     mainFields: ['main', 'module', 'browser']
   },
   entry: path.resolve(rootPath, 'src', 'App.tsx'),
-  target: 'electron-renderer',
+  target: 'web',
   devtool: 'source-map',
   module: {
     rules: [
@@ -19,7 +20,14 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }
+      },
+      {
+       test: /\.css$/,
+       use: [
+         MiniCssExtractPlugin.loader,
+         "css-loader", "postcss-loader",
+         ],
+     },
     ]
   },
   devServer: {
@@ -37,6 +45,10 @@ module.exports = {
     publicPath: './'
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "styles.css",
+      chunkFilename: "styles.css"
+    }),
     new HtmlWebpackPlugin()
   ]
 }

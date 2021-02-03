@@ -4,6 +4,7 @@ import { GlobalStyle } from './styles/GlobalStyle';
 import { Provider } from 'react-redux';
 import Greetings from './components/Greetings';
 import Home from './components/ReduxExamples/Home';
+import Tailwind from './components/TailwindExamples';
 import { createStore } from 'redux';
 import { store } from './store/ExampleStore';
 const mainElement = document.createElement('div');
@@ -15,7 +16,8 @@ const App = () => {
     <>
       {/* <GlobalStyle />
       <Greetings /> */}
-      <Home />
+      {/* <Home /> */}
+      <Tailwind />
     </>
   )
 };
