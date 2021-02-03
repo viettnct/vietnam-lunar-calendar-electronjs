@@ -1,15 +1,15 @@
 name: telegram message
-on: [push]
+on: [push, pull_request]
 jobs:
-
-  build:
-    name: Build
+  alert_telegram:
+    name: Alert Telegram
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: send custom message with args
       uses: appleboy/telegram-action@master
       with:
-        to: -593348120
-        token: 1670734630:AAHev_YkqM2PEjv6QkIxIIkeAmT9NJZwpyM
-        message: Test github object ${{ github.event }}
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |  #https://help.github.com/en/actions/reference/contexts-and-expression-syntax-for-github-actions#github-context
+          ${{ github.event_name }} commit in ${{ github.repository }} by "${{ github.actor }}". [${{github.sha}}@${{ github.ref }}]
