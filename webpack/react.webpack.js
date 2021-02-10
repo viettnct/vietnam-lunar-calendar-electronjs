@@ -19,7 +19,17 @@ module.exports = {
         use: {
           loader: 'babel-loader'
         }
-      }
+      }, {
+        test: /\.scss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      }, {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ]
   },
   devServer: {
